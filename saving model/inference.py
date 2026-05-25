@@ -4,7 +4,7 @@ import pandas as pd
 # import warnings
 # warnings.filterwarnings('ignore')
 
-model = joblib.load(r"saving model\diabetes.pkl")
+model = joblib.load("diabetes.pkl")
 
 columns = [
     "preg", "plas", "pres", "skin",
