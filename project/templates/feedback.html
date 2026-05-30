@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Feedback Form </title>
+</head>
+<body>
+    <h2> Learner Feedback Form</h2>
+    <form action ="/feedback" method="POST" >
+        <label> Full Name: </label><br>
+        <input type ="text" name ="name" placeholder="Enter your full name" required="True">
+        <br><br>
+
+        <label> Email Address: </label><br>
+        <input type="email" name="email" placeholder="Enter your email address" required="True">
+        <br><br>
+
+        <label> Course Name: </label><br>
+        <input type="text" name="course" placeholder="Enter the course name" required="True">
+        <br><br>
+
+        <label> Issue Type: </label><br>
+        <select name="issue_type" required="True">
+            <option value="">Select an issue type</option>
+            <option value="LMS Issue">LMS Issue</option>
+            <option value="Recording Issue">Recording Issue</option>
+            <option value="Trainer Issue">Trainer Issue</option>
+            <option value="Certificate Issue">Certificate Issue</option>
+            <option value="Payment Issue">Payment Issue</option>
+        </select>
+        <br><br>
+
+        <label> Message: </label><br>
+        <textarea name="message" rows="5" cols="40" placeholder="Describe your issue in detail" required="True"></textarea>
+        <br><br>
+        <button type="submit"> Submit Feedback </button>
+
+    </form>
+</body>
+</html>
