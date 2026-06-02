@@ -142,7 +142,7 @@ def get_students():
     return succes_response(message="Students fetched successfully", data=students)
 
 
-@app.route("/api/students/<int:student_id>", methods=["GET"])
+@app.route("/api/students/<student_id>", methods=["GET"])
 def get_student(student_id):
     student = find_student_by_id(student_id=student_id)
 
