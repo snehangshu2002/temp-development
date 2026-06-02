@@ -43,15 +43,15 @@ from flask import Flask, jsonify, request
 app = Flask(__name__)
 
 students = [
-    {
-        "id": "Snehangshu",
+    {   "id":1,
+        "name": "Snehangshu",
         "email": "snehangshu@gmail.com",
         "course": "Data Science",
         "age": 23,
         "active": True,
     },
-    {
-        "id": "Ayan",
+    {   "id":2,
+        "name": "Ayan",
         "email": "ayan@gmail.com",
         "course": "Data Analyst",
         "age": 25,
@@ -142,7 +142,7 @@ def get_students():
     return succes_response(message="Students fetched successfully", data=students)
 
 
-@app.route("/api/students/<student_id>", methods=["GET"])
+@app.route("/api/students/<int:student_id>", methods=["GET"])
 def get_student(student_id):
     student = find_student_by_id(student_id=student_id)
 
