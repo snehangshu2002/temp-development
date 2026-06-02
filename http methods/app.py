@@ -32,7 +32,7 @@ def home():
     return jsonify({
         "message": "Welcome to student API",
         "status": " success "
-    })
+    }) # response sent to client
 
 if __name__=="__main__":
     app.run(debug=True)
