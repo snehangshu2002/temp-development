@@ -80,16 +80,40 @@ def find_student_by_id(student_id):  # this functions finds the student using st
     for student in students:
         if student["id"] == student_id:
             return student
-
-        return None
+    return None
 
 
 def get_next_student_id():
     if len(students) == 0:
         return 1
 
-    max_id = max(students["id"] for student in students)
+    max_id = max(student["id"] for student in students)
     return max_id + 1
 
-def validate_student_data(data,required_fields=True):#this function is vaildate student input data
-    pass
+def validate_student_data(data, required_fields=True):#this function validates student input data
+    if not data:
+        return "Request body cannot be empty"
+    
+    required_keys = ["name", "email", "age", "course"]
+    
+    if required_fields:
+        for key in required_keys:
+            if key not in data:
+                return f"{key} is required"
+            
+    if "name" in data and not isinstance(data["name"], str):
+        return "Name must be a string"
+    if "email" in data and not isinstance(data["email"], str):
+        return "Email must be a string"
+    if "course" in data and not isinstance(data["course"], str):
+        return "Course must be a string"
+    if "age" in data and not isinstance(data["age"], int):
+        return "Age must be an integer"
+    if "age" in data and data["age"] <= 0:
+        return "Age must be greater than zero"
+    if "active" in data and not isinstance(data["active"], bool):
+        return "Active must be True or False"
+    
+    return None
+
+        
