@@ -153,3 +153,6 @@ def get_student(student_id):
 
     return succes_response(message=f"Student fetched successgully", data=student)
 
+
+if __name__=="__main__":
+    app.run(debug=True)
