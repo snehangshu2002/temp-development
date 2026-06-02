@@ -90,17 +90,20 @@ def get_next_student_id():
     max_id = max(student["id"] for student in students)
     return max_id + 1
 
-def validate_student_data(data, required_fields=True):#this function validates student input data
+
+def validate_student_data(
+    data, required_fields=True
+):  # this function validates student input data
     if not data:
         return "Request body cannot be empty"
-    
+
     required_keys = ["name", "email", "age", "course"]
-    
+
     if required_fields:
         for key in required_keys:
             if key not in data:
                 return f"{key} is required"
-            
+
     if "name" in data and not isinstance(data["name"], str):
         return "Name must be a string"
     if "email" in data and not isinstance(data["email"], str):
@@ -113,7 +116,22 @@ def validate_student_data(data, required_fields=True):#this function validates s
         return "Age must be greater than zero"
     if "active" in data and not isinstance(data["active"], bool):
         return "Active must be True or False"
-    
+
     return None
 
-        
+
+@app.route("/")
+def home():
+    return succes_response(
+        message="Welcome to Student Managment API",
+        data={
+            "available_endpoints": {
+                "Get all students": "/api/students",
+                "Get_one_student": "/api/students/<id>",
+                "POST create student": "/api/students",
+                "PUT replace student": "/api/students/<id>",
+                "PATCH update students": "/api/students/<id>",
+                "DELETE student": "/api/students/<id>",
+            }
+        },
+    )
